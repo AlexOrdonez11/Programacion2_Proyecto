@@ -638,7 +638,14 @@ public class chess {
     public static boolean comer_paso(int px, int py) {
         if (math[ux][uy] instanceof peon) {
             System.out.println("q");
-            if (mat[px][py + 1] == -2) {
+            boolean g=false,j=false;
+            if(py+1<mat.length&&(mat[ux][uy]==mat[px-1][py+1]||mat[ux][uy]==mat[px+1][py+1])){
+                g=true;
+            }
+            if(py-1>-1&&(mat[ux][uy]==mat[px-1][py-1]||mat[ux][uy]==mat[px+1][py-1])){
+                j=true;
+            }
+            if (mat[px][py + 1] == -2&&g) {
                 System.out.println("y");
                 if (((peon) math[px][py + 1]).getMov() == 2 && turno - turnoac == 1) {
                     System.out.println("j");
@@ -651,7 +658,7 @@ public class chess {
                     return true;
                 }
             } else {
-                if (mat[px][py - 1] == 2) {
+                if (mat[px][py - 1] == 2&&j) {
                     System.out.println("x");
                     if (((peon) math[px][py - 1]).getMov() == 2 && turno1 - turnoac == 0) {
                         System.out.println("h");
@@ -893,18 +900,19 @@ public class chess {
         }
         if (turno - turno1 == 1) {
             System.out.println("blanca");
-            if (py < 4) {
-                k = false;
-            }
+//            if (py < 4) {
+//                k = false;
+//            }
 
             for (int i = 0; i < mat.length; i++) {
                 for (int j = 0; j < mat.length; j++) {
                     if (math[i][j] != null) {
-                        if (math[i][j].isC() == true) {
-                            if (math[i][j] instanceof caballo && math[i][j].movimiento_condicion(i, j, mat, px, py) && Check(px, py) && jake(px, py, math, mat)) {
+                        if (math[i][j].isC() == false&& Check(px, py)) {
+                            System.out.println("g");
+                            if (math[i][j] instanceof caballo && jake(px, py, math, mat)) {
                                 k = false;
                             } else {
-                                if (math[i][j].movimiento_condicion(i, j, mat, px, py) && Check(px, py) && jake(px, py, math, mat) && piezas_intermedias(px, py, i, j, mat)) {
+                                if (jake(px, py, math, mat) && piezas_intermedias(px, py, i, j, mat)) {
                                     k = false;
                                 }
                             }
@@ -916,17 +924,17 @@ public class chess {
         } else {
             if (turno - turno1 == 0) {
                 System.out.println("negra");
-                if (py > 4) {
-                    k = false;
-                }
+//                if (py > 4) {
+//                    k = false;
+//                }
                 for (int i = 0; i < mat.length; i++) {
                     for (int j = 0; j < mat.length; j++) {
                         if (math[i][j] != null) {
-                            if (math[i][j].isC() == false) {
-                                if (math[i][j] instanceof caballo && math[i][j].movimiento_condicion(i, j, mat, px, py) && Check(px, py) && jake(px, py, math, mat)) {
+                            if (math[i][j].isC() == true&& Check(px, py)) {
+                                if (math[i][j] instanceof caballo && jake(px, py, math, mat)) {
                                     k = false;
                                 } else {
-                                    if (math[i][j].movimiento_condicion(i, j, mat, px, py) && Check(px, py) && jake(px, py, math, mat) && piezas_intermedias(px, py, i, j, mat)) {
+                                    if (jake(px, py, math, mat) && piezas_intermedias(px, py, i, j, mat)) {
                                         k = false;
                                     }
                                 }

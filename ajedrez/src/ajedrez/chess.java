@@ -35,14 +35,16 @@ public class chess {
         doblar.setVisible(true);
         JOptionPane.showMessageDialog(doblar, "Cosas Implementadas\n"
                 + "1.Recursividad\n"
-                + "2.Herencia\n"
-                + "3.Polimorfismo\n"
-                + "4.GUI\n"
-                + "5.Movimiento validado de todas las piezas\n"
-                + "6.Enroque\n"
-                + "7.Comer al Paso\n"
-                + "8.Jaque\n"
-                + "9.Jaque Mate");
+                + "2.Matrices\n"
+                + "3.Clases\n"
+                + "4.Herencia\n"
+                + "5.Polimorfismo\n"
+                + "6.GUI\n"
+                + "7.Movimiento validado de todas las piezas\n"
+                + "8.Enroque\n"
+                + "9.Comer al Paso\n"
+                + "10.Jaque\n"
+                + "11.Jaque Mate");
     }
 
     public static void panel() {

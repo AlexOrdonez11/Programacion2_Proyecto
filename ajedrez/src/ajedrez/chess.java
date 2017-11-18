@@ -58,7 +58,7 @@ public class chess {
         peon.setLayout(null);
         peon.setVisible(true);
         mat = tablero();
-        rellPiezas(0,0,tablero());
+        rellPiezas(0, 0, tablero());
         cambio(0, 0, mat);
         fondo(0, 0, mat);
         cambio(0, 0, mat);
@@ -109,7 +109,7 @@ public class chess {
         }
     }
 
-    public static void rellPiezas(int i,int j,int[][] mat) {
+    public static void rellPiezas(int i, int j, int[][] mat) {
         if (i == mat.length - 1 && j == mat[0].length - 1) {
             if (mat[i][j] == 2) {
                 math[i][j] = new peon(true);
@@ -893,6 +893,10 @@ public class chess {
         }
         if (turno - turno1 == 1) {
             System.out.println("blanca");
+            if (py < 4) {
+                k = false;
+            }
+
             for (int i = 0; i < mat.length; i++) {
                 for (int j = 0; j < mat.length; j++) {
                     if (math[i][j] != null) {
@@ -907,10 +911,14 @@ public class chess {
                         }
                     }
                 }
+
             }
         } else {
             if (turno - turno1 == 0) {
                 System.out.println("negra");
+                if (py > 4) {
+                    k = false;
+                }
                 for (int i = 0; i < mat.length; i++) {
                     for (int j = 0; j < mat.length; j++) {
                         if (math[i][j] != null) {
@@ -926,6 +934,7 @@ public class chess {
                         }
                     }
                 }
+
             }
         }
 
